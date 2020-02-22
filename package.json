@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test",
-    "test": "mocha -r ts-node/register test/**/*.spec.ts"
+    "test": "cls & mocha -r ts-node/register test/**/*.spec.ts"
   },
   "keywords": [
     "TDD",
