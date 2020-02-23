@@ -1,9 +1,17 @@
+import Set from '../Set/Set'
 export function getPairOfSocks(pile : Array<number>) : number {
   if (pile.length === 1) {
     return 0
   }
-  let countPairs : number = Number.MAX_VALUE 
-  // TODO: I need to create my own Set prior to move on
-  return 0 // Leave at Yellow state of testing until Set is applied
+  let countPairs : number = 0 
+  let set : Set = new Set()
+  for(let i = 0; i < pile.length; ++i){
+    if(set.has(pile[i])){
+      ++countPairs
+      set.remove(pile[i])
+    } else {
+      set.add(pile[i])
+    }
+  }
   return countPairs
 }

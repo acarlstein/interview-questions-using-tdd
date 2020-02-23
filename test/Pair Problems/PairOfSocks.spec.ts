@@ -23,7 +23,16 @@ describe('Pair of Socks', () => {
     })
 
     it('_ we cannot find a pair of socks', () => {
-      expect(getPairOfSocks([1,2])).to.eql(0)
+      expect(getPairOfSocks([1, 2])).to.eql(0)
+    })
+
+    it('_ we can find a single pair of socks', () => {
+      expect(getPairOfSocks([1, 1])).to.eql(1)
+    })
+
+    it('_ we can find more than one pair of socks', () => {
+      expect(getPairOfSocks([1, 2, 1, 2])).to.eql(2)
+      expect(getPairOfSocks([1, 2, 1, 2, 1, 2, 3])).to.eql(2)
     })
 
   })

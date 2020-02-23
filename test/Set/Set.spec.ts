@@ -63,8 +63,6 @@ describe('Set', () => {
       expect(set.has(2)).to.be.true
     })
 
-
-
   })
 
 })
