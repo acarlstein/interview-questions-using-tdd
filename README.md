@@ -35,3 +35,7 @@ to ensure that everything I write is correctly but this is not going to be the c
 
 Again, this is a playground where I am planning to play and have fun. Enjoy.
 
+# TODO
+
+* Create a HashMap that resembles the one used in Java
+* Turn Data Structures such as Set, Stack and such into Generic once. Currently, they only accept numbers.
