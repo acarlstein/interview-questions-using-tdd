@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import Set from '../../src/Set/Set'
+import Set from '../../../src/Over Simplified/Set/Set'
 
 describe('Set', () => {
   
