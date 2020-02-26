@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { getPairOfSocks } from '../../src/Pair Problems/PairOfSocks'
+import { getPairOfSocks } from '../../src/Problems/PairOfSocks'
 
 describe('Pair of Socks', () => {
 
