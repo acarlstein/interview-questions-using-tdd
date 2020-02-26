@@ -12,8 +12,6 @@ For example, `arr = [1, 1]` represent two socks and the number 1 represent a col
 
 ## Sock Problem
 
-* Level: Novice 
-
 We are asked to find the pair of socks of large pile.
 We are provided with an array of 7 elements: `arr = [1, 2, 1, 2, 1, 2, 3]` and `n=7`
 Each number represents a color such as 1 is red, 2 is blue, etc.
