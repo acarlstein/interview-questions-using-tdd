@@ -1,4 +1,4 @@
-import Set from '../Over Simplified/Set/Set'
+import Set from '../OSSL/Set'
 export function getPairOfSocks(pile : Array<number>) : number {
   if (pile.length === 1) {
     return 0
