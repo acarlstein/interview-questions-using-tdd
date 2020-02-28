@@ -7,12 +7,12 @@ export class Money {
     this._currency = currency
   }
 
-  static Dollar(amount: number) : Dollar {
-    return new Dollar(amount, "USD")
+  static dollar(amount: number) : Money {
+    return new Money(amount, "USD")
   }
 
-  static Franc(amount: number): Franc {
-    return new Franc(amount, "CHF")
+  static franc(amount: number): Money {
+    return new Money(amount, "CHF")
   }
 
   getClass(): any {
@@ -36,20 +36,4 @@ export class Money {
   toString(): string {
     return this.amount + " " + this._currency
   }
-}
-
-export class Dollar extends Money{
-  
-  constructor(amount : number, currency: string){
-    super(amount, currency)
-  }
-
-}
-
-export class Franc extends Money {
-
-  constructor(amount : number, currency: string){
-    super(amount, currency)
-  }
-
 }

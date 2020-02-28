@@ -11,11 +11,13 @@
 * ~~Compare Francs with dollars~~ Done
 * ~~Currency?~~ Done
 * ~~Common times~~ Done
+* ~~Delete test multiplication duplicates?~~ Done
 * $5 + 10 CHF = $10 if rate is 2:1
+* $5 + $5 = $10
 * Money rounding?
 * hashCode()
 * Equal null
 * Equal object
 * Dollar/Franc multiplication
 * Dollar/Franc duplication
-* Delete test multiplication duplicates?
+
