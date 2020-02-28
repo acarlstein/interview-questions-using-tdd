@@ -19,3 +19,4 @@
 * Common times
 * Currency?
 * Dollar/Franc duplications
+* Delete multiplication test duplicates?
