@@ -28,7 +28,11 @@ describe('MultiCurrency', () => {
       expect(five.times(3)).to.be.eql(new Franc(15))
     })
 
+    it('We can compare', () => {
+      expect(new Franc(5).equals(new Franc(5))).to.be.true
+      expect(new Franc(5).equals(new Franc(6))).to.be.false
+    })
+
   })
   
-
 })
