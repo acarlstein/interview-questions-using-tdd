@@ -21,7 +21,6 @@ describe('MultiCurrency', () => {
   })
 
   describe('Using Francs', () => {
-
     it('We can perform multiplications', () => {
       let five: Franc = new Franc(5)
       expect(five.times(2)).to.be.eql(new Franc(10))
@@ -32,7 +31,11 @@ describe('MultiCurrency', () => {
       expect(new Franc(5).equals(new Franc(5))).to.be.true
       expect(new Franc(5).equals(new Franc(6))).to.be.false
     })
-
   })
   
+  describe('Using Francs and Dollars', () => {
+    it('We can compare', () => {
+      expect(new Franc(5).equals(new Dollar(5))).to.be.false
+    })
+  })
 })

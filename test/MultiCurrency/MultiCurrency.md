@@ -8,11 +8,14 @@
 * ~~Make "amount" private~~ Done
 * ~~5 CHF * 2 = 10 CHF~~ Done
 * ~~Common equals~~ Done
+* ~~Compare Francs with dollars~~ Done
 * $5 + 10 CHF = $10 if rate is 2:1
 * Money rounding?
 * Make "amount" private
 * hash()
 * Equal null
 * Equal object
-* Dollar/Franc Multiplication
+* Dollar/Franc multiplication
 * Common times
+* Currency?
+* Dollar/Franc duplications
