@@ -33,5 +33,11 @@ describe('MultiCurrency', () => {
     it('We can compare', () => {
       expect(Money.Franc(5).equals(Money.Dollar(5))).to.be.false
     })
+
+    it('We can check for currency', () => {
+      expect(Money.Dollar(1).currency()).to.be.eql("USD")
+      expect(Money.Franc(1).currency()).to.be.eql("CHF")
+    })
   })
+  
 })

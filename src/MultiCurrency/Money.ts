@@ -1,12 +1,18 @@
 export abstract class Money {
   protected amount: number
+  protected _currency: string
+
+  constructor(amount: number, currency: string){
+    this.amount = amount
+    this._currency = currency
+  }
 
   static Dollar(amount: number) : Dollar {
-    return new Dollar(amount)
+    return new Dollar(amount, "USD")
   }
 
   static Franc(amount: number): Franc {
-    return new Franc(amount)
+    return new Franc(amount, "CHF")
   }
 
   getClass(): any {
@@ -22,28 +28,31 @@ export abstract class Money {
   }
 
   abstract times(multiplier: number): Money
+
+  currency(): string{
+    return this._currency
+  }
 }
 
 export class Dollar extends Money{
   
-  constructor(amount : number){
-    super()
-    this.amount = amount
+  constructor(amount : number, currency: string){
+    super(amount, currency)
   }
 
   times (multiplier: number) : Dollar {
-    return new Dollar(this.amount * multiplier) 
+    return Money.Dollar(this.amount * multiplier)
   }
+
 }
 
 export class Franc extends Money {
-  
-  constructor(amount : number){
-    super()
-    this.amount = amount
+
+  constructor(amount : number, currency: string){
+    super(amount, currency)
   }
 
   times (multiplier: number) : Franc {
-    return new Franc(this.amount * multiplier) 
+    return Money.Franc(this.amount * multiplier) 
   }
 }

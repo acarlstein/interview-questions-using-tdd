@@ -9,6 +9,7 @@
 * ~~5 CHF * 2 = 10 CHF~~ Done
 * ~~Common equals~~ Done
 * ~~Compare Francs with dollars~~ Done
+* ~~Currency?~~ Done
 * $5 + 10 CHF = $10 if rate is 2:1
 * Money rounding?
 * Make "amount" private
@@ -17,6 +18,5 @@
 * Equal object
 * Dollar/Franc multiplication
 * Common times
-* Currency?
-* Dollar/Franc duplications
+* Dollar/Franc duplication
 * Delete multiplication test duplicates?
