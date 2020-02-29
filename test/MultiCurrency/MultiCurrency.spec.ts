@@ -78,6 +78,18 @@ describe('MultiCurrency', () => {
       const result: Money = creditUnion.reduce(Money.dollar(1), "USD")
       expect(result.equals(Money.dollar(1))).to.be.true
     })
+
+  })
+
+  describe('We can perform changing operations', () => {
+
+    it('We can reduce money with different currency', () => {
+      const creditUnion: CreditUnion = new CreditUnion()
+      creditUnion.addRate("CHF", "USD", 2)
+      const result: Money = creditUnion.reduce(Money.franc(2), "USD")
+      expect(result.equals(Money.dollar(1))).to.be.true
+    })
+
   })
   
 })

@@ -1,5 +1,6 @@
+import CreditUnion from './CreditUnion'
 export interface Expression {
-  reduce(to: string): Money
+  reduce(creditUnion: CreditUnion, to: string): Money
 }
 
 export class Money implements Expression{
@@ -45,9 +46,11 @@ export class Money implements Expression{
     return new Sum(this, addend)
   }
 
-  reduce(to: string): Money {
-    return this
+  reduce(creditUnion: CreditUnion, to: string): Money {
+    const rate = creditUnion.rate(this._currency, to) 
+    return new Money(this.amount / rate, to)
   }
+
 }
 
 export class Sum implements Expression {
@@ -59,7 +62,7 @@ export class Sum implements Expression {
     this.addend = addend
   }
 
-  reduce(to: string): Money {
+  reduce(creditUnion: CreditUnion, to: string): Money {
     const amount: number = this.augend.amount + this.addend.amount
     return new Money(amount, to)
   }

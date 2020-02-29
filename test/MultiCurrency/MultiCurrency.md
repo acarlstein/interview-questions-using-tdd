@@ -22,5 +22,7 @@
 * Dollar/Franc multiplication
 * Dollar/Franc duplication
 * Return Money from $5 + $5
+* Reduce Money with conversion
+* Reduce with credit uniont and string
 
 
