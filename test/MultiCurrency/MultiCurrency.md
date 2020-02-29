@@ -12,6 +12,7 @@
 * ~~Currency?~~ Done
 * ~~Common times~~ Done
 * ~~Delete test multiplication duplicates?~~ Done
+* ~~Credit Union can reduce money~~ Done
 * $5 + 10 CHF = $10 if rate is 2:1
 * $5 + $5 = $10
 * Money rounding?
@@ -20,4 +21,6 @@
 * Equal object
 * Dollar/Franc multiplication
 * Dollar/Franc duplication
+* Return Money from $5 + $5
+
 

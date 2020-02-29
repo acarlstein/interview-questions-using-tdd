@@ -1,5 +1,6 @@
 import { expect } from 'chai';
-import { Money } from '../../src/MultiCurrency/Money';
+import { Money, Expression, Sum } from '../../src/MultiCurrency/Money';
+import CreditUnion from '../../src/MultiCurrency/CreditUnion'
 
 describe('MultiCurrency', () => {
 
@@ -43,6 +44,39 @@ describe('MultiCurrency', () => {
     it('We can check for difference in class equality', () => {
       expect(new Money(10, "CHF").equals(Money.franc(10))).to.be.true
       expect(new Money(10, "USD").equals(Money.dollar(10))).to.be.true
+    })
+  })
+
+  describe('Making operations with a Credit Union',  () => {
+    it('We can perform additions', () => {
+      const five: Money = Money.dollar(5)
+      const sum: Expression = five.plus(five)
+      const creditUnion: CreditUnion = new CreditUnion()
+      const reduced: Money = creditUnion.reduce(sum, "USD")
+      expect(reduced.equals(Money.dollar(10))).to.be.true
+    })
+
+    it('We woud like to perform additions using a real expression', () => {
+      const five: Money = Money.dollar(5)
+      const result: Expression = five.plus(five)
+      const sum: Sum = <Sum> result
+      expect(sum.augend).to.be.eql(five)
+      expect(sum.addend).to.be.eql(five)
+    })
+
+    it('We would like the Credit Union to be able to perform reductions', () =>{
+      const augend: Money = Money.dollar(3)
+      const addend: Money = Money.dollar(4)
+      const sum: Expression = new Sum(augend, addend)
+      const creditUnion: CreditUnion = new CreditUnion()
+      const result: Money = creditUnion.reduce(sum, "USD")
+      expect(result.equals(Money.dollar(7))).to.be.true
+    })
+
+    it('We can reduce the money', () => {
+      const creditUnion: CreditUnion = new CreditUnion()
+      const result: Money = creditUnion.reduce(Money.dollar(1), "USD")
+      expect(result.equals(Money.dollar(1))).to.be.true
     })
   })
   
