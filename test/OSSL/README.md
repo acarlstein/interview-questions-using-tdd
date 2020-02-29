@@ -17,3 +17,14 @@ Using TDD, create a basic Stack in which we can push a value, pop a value, peek 
 ## Hashtable
 
 Using TDD, we need to create a generic Hashtable that can put or get an object.
+
+I am planning to use this hash formula to obtain a hash number:
+`s.charCodeAt(0) * 31n-1 + s.charCodeAt(1) * 31n-2 + ... + s.charCodeAt(n-1)`
+
+The idea is that if I can obtain a string from a number, string or object provided as a key,
+I can obtain a string that can be used as a seed to create this hash number..
+
+When I do the operations such as put, this hash value will be modified based on the side of the container array.
+This means that is I decide to resize the array, I must make sure to rehash all the hash values.
+
+I will have to create a linked list or use an dynamic array to deal with the collisions.
