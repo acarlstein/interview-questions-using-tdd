@@ -35,10 +35,8 @@ export default class Hashtable<K, V> {
 export function hash(value: any) : number {
   let hashValue: number = 0
   value = JSON.stringify(value)
-  console.log(value)
   for(let i = 0; i < value.length; ++i){
     hashValue += value.charCodeAt(i) * Math.pow(31, value.length - i)
   }      
-
   return hashValue
 }
