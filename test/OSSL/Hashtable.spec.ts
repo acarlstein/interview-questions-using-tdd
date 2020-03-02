@@ -60,8 +60,21 @@ describe('Hashtable', () => {
     it('_ we get a hash number from a string', () => {
       let str: string = "ABC"
       expect(hash(str)).to.be.greaterThan(0)
-      expect(hash(str)).to.be.eql(2001918)
+      expect(hash(str)).to.be.eql(1035451646)
     })
+
+    it('_ we get a hash number from a number', () => {
+      let value: number = 123
+      expect(hash(value)).to.be.greaterThan(0)
+      expect(hash(value)).to.be.eql(1509390)
+    })
+
+    it('_ we get a hash number from an object', () => {
+      let object: Object = {"abc": "123"}
+      expect(hash(object)).to.be.greaterThan(0)
+      expect(hash(object)).to.be.eql(3.032686323213873e+21)
+    })
+
   })
 
 })
