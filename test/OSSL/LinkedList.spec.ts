@@ -49,6 +49,22 @@ describe('LinkedList', () => {
       expect(linkedList.toArray()).to.be.eql(['A', 'B'])
     })
 
+    it('_ allows to find a value', () => {
+      linkedList.add('B')
+      linkedList.add('C')
+      expect(linkedList.has('B')).to.be.true
+    })
+
+    it('_ throws when trying to remove an non-existent element', () => {
+      expect(() => linkedList.remove('B')).to.throw(Error, 'NoSuchElementException')
+    })
+
+    it('_ allows to remove an element at the end of the list', () => {
+      linkedList.add('B')
+      linkedList.add('C')
+      expect(linkedList.remove('C')).to.be.eql('C')
+      expect(linkedList.toArray()).to.be.eql(['A', 'B'])
+    })
     
   })
 
