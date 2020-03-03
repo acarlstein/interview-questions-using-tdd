@@ -1,14 +1,16 @@
 export default class Hashtable<K, V> {
 
-  private container: Array<[K, V]> = []
+  private _size: number = 0;
+  private tableSize: number = 16
+  private container: Array<[K, V]> = new Array<[K, V]>(this.tableSize)
 
   empty(): Boolean {
-    return this.container.length == 0
+    return this._size == 0
   }
 
   has(key: K): Boolean {
-    for(let item of this.container){
-      let [itemKey, itemValue] = item
+    for(let i = 0; i < this._size; ++i){
+      let [itemKey, itemValue] = this.container[i]
       if (key === itemKey){
         return true
       }
@@ -21,7 +23,8 @@ export default class Hashtable<K, V> {
       throw new Error('NullPointerException')
     }
     let item : [K, V] = [key, value]
-    this.container.push(item)
+    this.container[this._size] = item
+    this._size++
     return value
   }
   
@@ -30,7 +33,7 @@ export default class Hashtable<K, V> {
   }
 
   size() : number {
-    return this.container.length
+    return this._size
   }
 
 }
