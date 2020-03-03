@@ -59,13 +59,40 @@ describe('LinkedList', () => {
       expect(() => linkedList.remove('B')).to.throw(Error, 'NoSuchElementException')
     })
 
-    it('_ allows to remove an element at the end of the list', () => {
-      linkedList.add('B')
-      linkedList.add('C')
-      expect(linkedList.remove('C')).to.be.eql('C')
-      expect(linkedList.toArray()).to.be.eql(['A', 'B'])
+    describe('_ can remove an element in any position of the link', () => {
+
+      beforeEach('Before each test', () => {
+        linkedList.add('B')
+        linkedList.add('C')  
+      })
+
+      it('_ has three elements to test removal', () => {
+        expect(linkedList.size()).to.be.eql(3)
+        expect(linkedList.toArray()).to.be.eql(['A', 'B', 'C'])
+      })
+
+      it('_ allows to remove an element at the beginning of the list', () => {
+        expect(linkedList.size()).to.be.eql(3)
+        expect(linkedList.remove('A')).to.be.eql('A')
+        expect(linkedList.size()).to.be.eql(2)
+        expect(linkedList.toArray()).to.be.eql(['B', 'C'])
+      })
+
+      it('_ allows to remove an element at the ending of the list', () => {
+        expect(linkedList.size()).to.be.eql(3)
+        expect(linkedList.remove('C')).to.be.eql('C')
+        expect(linkedList.size()).to.be.eql(2)      
+        expect(linkedList.toArray()).to.be.eql(['A', 'B'])
+      })
+
+      it('_ allows to remove an element at the middle of the list', () => {
+        expect(linkedList.size()).to.be.eql(3)
+        expect(linkedList.remove('B')).to.be.eql('B')
+        expect(linkedList.size()).to.be.eql(2)      
+        expect(linkedList.toArray()).to.be.eql(['A', 'C'])
+      })
     })
-    
+
   })
 
 })
