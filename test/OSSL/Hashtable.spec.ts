@@ -17,7 +17,7 @@ describe('Hashtable', () => {
     expect(hashtable.empty()).to.be.true
   })
 
-  describe('Hashmap is empty', () => {
+  describe('Hashtable is empty', () => {
 
     it('_ has no items', () => {
       expect(hashtable.has('1')).to.be.false
@@ -28,13 +28,18 @@ describe('Hashtable', () => {
       expect(hashtable.empty()).to.be.false
     })
 
+    it('_ throws when trying to use a null value as a key or value', () => {
+      expect(() => hashtable.put('1', null)).to.throw(Error, 'NullPointerException')
+      expect(() => hashtable.put(null, 1)).to.throw(Error, 'NullPointerException')
+    })
+
     it('_ throws when trying to remove an item that does not exist', () => {
       expect(() => hashtable.remove('1')).to.throw(Error, 'EmptyHashtableException')
     })
 
   })
 
-  describe('An non empty stack', () => {
+  describe('An non empty Hashtable', () => {
 
     beforeEach('Before each test', () => {
       hashtable.put('1', 1)
@@ -74,6 +79,10 @@ describe('Hashtable', () => {
       expect(hash(object)).to.be.greaterThan(0)
       expect(hash(object)).to.be.eql(3.032686323213873e+21)
     })
+
+  })
+
+  describe('Can perform synchronize operations', () => {
 
   })
 

@@ -17,6 +17,9 @@ export default class Hashtable<K, V> {
   }
 
   put(key: K, value: V): V {
+    if (key == null || value == null){
+      throw new Error('NullPointerException')
+    }
     let item : [K, V] = [key, value]
     this.container.push(item)
     return value
