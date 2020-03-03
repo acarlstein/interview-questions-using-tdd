@@ -9,11 +9,12 @@ export default class Hashtable<K, V> {
   }
 
   has(key: K): Boolean {
-    for(let i = 0; i < this._size; ++i){
-      let [itemKey, itemValue] = this.container[i]
+    if(!this.empty()){
+      let index = this.getIndex(key)    
+      let [itemKey, itemValue] = this.container[index]
       if (key === itemKey){
         return true
-      }
+      }  
     }
     return false
   }
@@ -23,11 +24,16 @@ export default class Hashtable<K, V> {
       throw new Error('NullPointerException')
     }
     let item : [K, V] = [key, value]
-    this.container[this._size] = item
+    let index = this.getIndex(key)
+    this.container[index] = item
     this._size++
     return value
   }
-  
+
+  private getIndex(key : K): number {
+    return hash(key) % this.tableSize
+  }
+
   remove(key: K): V {
     throw new Error('EmptyHashtableException')
   }
