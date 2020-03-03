@@ -59,6 +59,18 @@ describe('Hashtable', () => {
       expect(hashtable.size()).to.be.eql(2)
     })
 
+    it('_ can remove an element using the key', () => {
+      expect(hashtable.put('2', 2)).to.be.eql(2)
+      expect(hashtable.put('3', 3)).to.be.eql(3)
+      expect(hashtable.size()).to.be.eql(3)
+      expect(hashtable.remove('2')).to.be.eql(2)
+      expect(hashtable.size()).to.be.eql(2)
+    })
+
+    it('_ throw when trying to remove an item that does not exists', () => {
+      expect(() => hashtable.remove('3')).to.throw(Error, 'NoSuchElementException')
+    })
+
   })
 
   describe('Hashing', () => {

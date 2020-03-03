@@ -35,7 +35,18 @@ export default class Hashtable<K, V> {
   }
 
   remove(key: K): V {
-    throw new Error('EmptyHashtableException')
+    if (this.empty()){
+      throw new Error('EmptyHashtableException')
+    }
+    let index = this.getIndex(key)
+    if (this.container[index] == undefined || 
+        this.container[index][0] != key){
+      throw new Error('NoSuchElementException')
+    }
+    let itemValue = this.container[index][1]
+    this.container[index] = undefined
+    this._size--  
+    return itemValue
   }
 
   size() : number {
