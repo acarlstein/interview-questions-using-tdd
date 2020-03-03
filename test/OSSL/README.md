@@ -16,4 +16,5 @@ Using TDD, create a basic Stack in which we can  push a value, pop a value, peek
 
 ## Linked List
 
-Linked List is one of the tools used by other Data Structures such as Hashtable and HashMaps
+In order to build an effective Hashtable and a Hashmap, I need a Linked List.
+In that way later, I can built an effective Set by using such Hashmap.

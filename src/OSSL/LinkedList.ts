@@ -14,12 +14,11 @@ export default class LinkedList<T> {
     if(this.root == null){
       this.root = this.createNode(value)
     }else{
-      let newNode = this.createNode(value)
       let current: LinkNode<T> = this.root
       while(current.next != null){
         current = current.next
       }
-      current.next = newNode 
+      current.next = this.createNode(value)
     }
     this._size++
     return value
