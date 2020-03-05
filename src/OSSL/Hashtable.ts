@@ -31,7 +31,7 @@ export default class Hashtable<K, V> {
   }
 
   private getIndex(key : K): number {
-    return hash(key) % this.tableSize
+    return hashCode(key) % this.tableSize
   }
 
   remove(key: K): V {
@@ -55,7 +55,7 @@ export default class Hashtable<K, V> {
 
 }
 
-export function hash(value: any) : number {
+export function hashCode(value: any) : number {
   let hashValue: number = 0
   value = JSON.stringify(value)
   for(let i = 0; i < value.length; ++i){

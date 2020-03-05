@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import Hashtable from '../../src/OSSL/Hashtable'
-import { hash } from '../../src/OSSL/Hashtable'
+import { hashCode } from '../../src/OSSL/Hashtable'
 
 describe('Hashtable', () => {
   let hashtable: Hashtable<string, number> = new Hashtable<string, number>()
@@ -79,31 +79,31 @@ describe('Hashtable', () => {
       let bucket: number = 16
 
       let str: string = "123"      
-      expect(hash(str) % bucket).to.be.greaterThan(-1)
+      expect(hashCode(str) % bucket).to.be.greaterThan(-1)
 
       let value: number = 123
-      expect(hash(value) % bucket).to.be.greaterThan(-1)
+      expect(hashCode(value) % bucket).to.be.greaterThan(-1)
       
       let object: Object = {"abc": "123"}
-      expect(hash(object) % bucket).to.be.greaterThan(-1)
+      expect(hashCode(object) % bucket).to.be.greaterThan(-1)
     })
 
     it('_ we get a hash number from a string', () => {
       let str: string = "ABC"
-      expect(hash(str)).to.be.greaterThan(-1)
-      expect(hash(str)).to.be.eql(33401666)
+      expect(hashCode(str)).to.be.greaterThan(-1)
+      expect(hashCode(str)).to.be.eql(33401666)
     })
 
     it('_ we get a hash number from a number', () => {
       let value: number = 123
-      expect(hash(value)).to.be.greaterThan(-1)
-      expect(hash(value)).to.be.eql(48690)
+      expect(hashCode(value)).to.be.greaterThan(-1)
+      expect(hashCode(value)).to.be.eql(48690)
     })
 
     it('_ we get a hash number from an object', () => {
       let object: Object = {"abc": "123"}
-      expect(hash(object)).to.be.greaterThan(-1)
-      expect(hash(object)).to.be.eql(391630146)
+      expect(hashCode(object)).to.be.greaterThan(-1)
+      expect(hashCode(object)).to.be.eql(391630146)
     })
 
   })
