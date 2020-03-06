@@ -1,5 +1,5 @@
 import LinkedList from '../OSSL/LinkedList'
-
+import { hashCode } from './hashCode'
 export default class Hashtable<K, V> {
 
   private _size: number = 0;
@@ -90,13 +90,4 @@ export default class Hashtable<K, V> {
     return this._size
   }
 
-}
-
-export function hashCode(value: any) : number {
-  let hashValue: number = 0
-  value = JSON.stringify(value)
-  for(let i = 0; i < value.length; ++i){
-    hashValue = ((hashValue << 5) - hashValue) + value.charCodeAt(i) & 0xFFFFFFFF
-  }      
-  return Math.abs(hashValue)
 }

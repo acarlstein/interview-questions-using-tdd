@@ -1,3 +1,5 @@
+import { hashCode } from '../OSSL/hashCode'
+
 export default class Pair {
   private from: string
   private to: string
@@ -11,7 +13,7 @@ export default class Pair {
     return this.from === pair.from && this.to === pair.to
   }
 
-  hashCode() : number {
-    return 0
+  hashCode() : number {   
+    return hashCode(this.from.concat(this.to))
   }
 }
