@@ -11,12 +11,11 @@ export default class Hashtable<K, V> {
   }
 
   has(key: K): Boolean {
-    if(!this.empty()){
-      let index = this.getIndex(key)    
-      if (this.container[index] === undefined){
+    if(!this.empty()){  
+      let list: LinkedList<[K, V]> = this.getListFromKey(key)
+      if (list === undefined){
         return false
-      }
-      let list: LinkedList<[K, V]> = this.container[index]
+      }      
       let items: [K,V][] = list.toArray()      
       for (let i = 0; i < items.length; ++i){
         let item: [K, V] = items[i]
@@ -28,6 +27,10 @@ export default class Hashtable<K, V> {
     return false
   }
 
+  private getListFromKey(key: K) : LinkedList<[K, V]> {
+    return this.container[this.getIndex(key)]
+  }
+
   // TODO: Refactor to something better
   put(key: K, value: V): V {
     if (key == null || value == null){
@@ -35,11 +38,10 @@ export default class Hashtable<K, V> {
     }
     let item : [K, V] = [key, value]
     let index = this.getIndex(key)
-    let list : LinkedList<[K, V]> = new LinkedList<[K, V]>()
-    if (this.container[index] === undefined){     
-      list.add(item)      
+    let list : LinkedList<[K, V]> = this.container[index]
+    if (list === undefined){     
+      list = new LinkedList<[K, V]>()
     } else {      
-      let list = this.container[index]
       if (this.has(key)){
         let oldItems: [K,V][] = list.toArray()      
         for (let i = 0; i < oldItems.length; ++i){
@@ -49,14 +51,17 @@ export default class Hashtable<K, V> {
           }
         }
       }
-      list.add(item)      
     }    
+    list.add(item)
     this.container[index] = list
     this._size++
     return value
   }
 
   private getIndex(key : K): number {
+    if (typeof key['hashCode'] === 'function'){
+      return key['hashCode'] % this.tableSize
+    }
     return hashCode(key) % this.tableSize
   }
 
@@ -88,6 +93,29 @@ export default class Hashtable<K, V> {
 
   size() : number {
     return this._size
+  }
+
+  get(key: K) : V {
+    if(this.empty()){
+      throw new Error('EmptyHashtableException')
+    }
+    let list: LinkedList<[K, V]> = this.getListFromKey(key)
+    if (list === undefined){
+      throw new Error('NoSuchElementException')
+    }      
+    let items: [K,V][] = list.toArray()      
+    for (let i = 0; i < items.length; ++i){
+      let item: [K, V] = items[i]
+      // check for hashcode
+      if (typeof key['hashCode'] === 'function'
+        && typeof item[0]['hashCode'] === 'function'
+        && key['hashCode'] === item[0]['hashCode']){
+        return item[1]
+      }else if (key === item[0]){
+        return item[1]
+      }
+    }
+    throw new Error('NoSuchElementException')
   }
 
 }

@@ -37,6 +37,10 @@ describe('Hashtable', () => {
       expect(() => hashtable.remove('1')).to.throw(Error, 'EmptyHashtableException')
     })
 
+    it('_ throws when trying to get an item that does not exists', () => {
+      expect(() => hashtable.get('1')).to.throw(Error, 'EmptyHashtableException')
+    })
+
   })
 
   describe('An non empty Hashtable', () => {
@@ -71,9 +75,15 @@ describe('Hashtable', () => {
       expect(() => hashtable.remove('3')).to.throw(Error, 'NoSuchElementException')
     })
 
-  })
+    it('_ throw when trying to remove an item that does not exists', () => {
+      expect(() => hashtable.get('3')).to.throw(Error, 'NoSuchElementException')
+    })
 
-  describe('Can perform synchronize operations', () => {
+    it('_ can get an element using the key', () => {
+      expect(hashtable.put('2', 2)).to.be.eql(2)
+      expect(hashtable.put('3', 3)).to.be.eql(3)
+      expect(hashtable.get('2')).to.be.eql(2)
+    })
 
   })
 
