@@ -54,16 +54,17 @@ export class Money implements Expression{
 }
 
 export class Sum implements Expression {
-  augend: Money
-  addend: Money
+  augend: Expression
+  addend: Expression
   
-  constructor(augend: Money, addend: Money){
+  constructor(augend: Expression, addend: Expression){
     this.augend = augend
     this.addend = addend
   }
 
   reduce(creditUnion: CreditUnion, to: string): Money {
-    const amount: number = this.augend.amount + this.addend.amount
+    let amount: number = this.augend.reduce(creditUnion, to).amount
+    amount += this.addend.reduce(creditUnion, to).amount
     return new Money(amount, to)
   }
 }

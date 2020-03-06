@@ -79,6 +79,17 @@ describe('MultiCurrency', () => {
       expect(result.equals(Money.dollar(1))).to.be.true
     })
 
+    it('We can perform mixed currencies additions ', () => {
+      const fiveDollars: Money = Money.dollar(5)
+      const tenFrancs: Money = Money.franc(10)
+      const creditUnion: CreditUnion = new CreditUnion()
+      creditUnion.addRate("CHF", "USD", 2)
+      const result: Money = creditUnion.reduce(fiveDollars.plus(tenFrancs), "USD")
+      expect(result).to.be.eql(Money.dollar(10))
+      expect(result.equals(Money.dollar(10))).to.be.true
+
+    })
+
   })
 
   describe('We can perform changing operations such as ', () => {
