@@ -13,8 +13,11 @@
 * ~~Common times~~ Done
 * ~~Delete test multiplication duplicates?~~ Done
 * ~~Credit Union can reduce money~~ Done
+* ~~$5 + $5 = $10~~ Done
+* ~~Reduce Money with conversion~~ Done
+* ~~Reduce with credit union and string~~ Done
+* ~~Credit Union reduce with money~~ Done
 * $5 + 10 CHF = $10 if rate is 2:1
-* $5 + $5 = $10
 * Money rounding?
 * hashCode()
 * Equal null
