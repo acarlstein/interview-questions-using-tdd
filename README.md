@@ -34,8 +34,3 @@ Also, I will not be going over my grammar. Normally, I would spend hours reviewi
 to ensure that everything I write is correctly but this is not going to be the case.
 
 Again, this is a playground where I am planning to play and have fun. Enjoy.
-
-# TODO
-
-* Create a HashMap that resembles the one used in Java
-* Turn Data Structures such as Set, Stack and such into Generic once. Currently, they only accept numbers.

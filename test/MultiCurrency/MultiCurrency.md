@@ -23,12 +23,13 @@ If you wish to understand this code better, I will advice to purchase
 * ~~$5 + 10 CHF = $10 if rate is 2:1~~ Done
 * ~~Implement plus method in Sum class~~ Done
 * ~~Write times abstract method in Expression abstract class~~
+* ~~Return Money from $5 + $5~~
 * Money rounding?
 * hashCode()
 * Equal null
 * Equal object
 * Dollar/Franc multiplication
 * Dollar/Franc duplication
-* Return Money from $5 + $5
+
 
 

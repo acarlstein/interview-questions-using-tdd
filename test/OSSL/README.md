@@ -8,7 +8,11 @@ TypeScript/JavaScript doesn't have the same kind of HashMap that Java has; there
 
 ### TODO
 
-Replace the Array with an HashMap
+* In the Hashmap, implement Synchonization
+* Create a HashMap class
+* In Set class, replace the array container with a HashMap
+* Create a universal object where the hashCode method can be use by all objects
+  * May attach method as a prototype to TypeScript objects such as String, Boolean, etc.
 
 ## Stack
 
@@ -34,3 +38,4 @@ This means that is I decide to resize the array, I must make sure to rehash all 
 
 ~~I will have to create a linked list or use an dynamic array to deal with the collisions.~~
 I created an oversimplified version of a linked list to use in this Hashtable. I will perform the code changes to apply it.
+
