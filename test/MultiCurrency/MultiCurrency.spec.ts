@@ -80,8 +80,8 @@ describe('MultiCurrency', () => {
     })
 
     it('We can perform mixed currencies additions ', () => {
-      const fiveDollars: Money = Money.dollar(5)
-      const tenFrancs: Money = Money.franc(10)
+      const fiveDollars: Expression = Money.dollar(5)
+      const tenFrancs: Expression = Money.franc(10)
       const creditUnion: CreditUnion = new CreditUnion()
       creditUnion.addRate("CHF", "USD", 2)
       const result: Money = creditUnion.reduce(fiveDollars.plus(tenFrancs), "USD")

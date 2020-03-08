@@ -1,6 +1,7 @@
 import CreditUnion from './CreditUnion'
 export interface Expression {
   reduce(creditUnion: CreditUnion, to: string): Money
+  plus(addend: Expression): Expression
 }
 
 export class Money implements Expression{
@@ -42,7 +43,7 @@ export class Money implements Expression{
     return this.amount + " " + this._currency
   }
 
-  plus(addend: Money): Expression {
+  plus(addend: Expression): Expression {
     return new Sum(this, addend)
   }
 
@@ -66,5 +67,9 @@ export class Sum implements Expression {
     let amount: number = this.augend.reduce(creditUnion, to).amount
     amount += this.addend.reduce(creditUnion, to).amount
     return new Money(amount, to)
+  }
+
+  plus(addend: Expression): Expression {
+    return null
   }
 }

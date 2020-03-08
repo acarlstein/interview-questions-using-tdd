@@ -17,7 +17,7 @@
 * ~~Reduce Money with conversion~~ Done
 * ~~Reduce with credit union and string~~ Done
 * ~~Credit Union reduce with money~~ Done
-* $5 + 10 CHF = $10 if rate is 2:1
+* ~~$5 + 10 CHF = $10 if rate is 2:1~~ Done
 * Money rounding?
 * hashCode()
 * Equal null
@@ -25,5 +25,7 @@
 * Dollar/Franc multiplication
 * Dollar/Franc duplication
 * Return Money from $5 + $5
+* Implement plus method in Sum class
+* Write times abstract method in Expression abstract class
 
 
