@@ -2,6 +2,8 @@ import CreditUnion from './CreditUnion'
 export interface Expression {
   reduce(creditUnion: CreditUnion, to: string): Money
   plus(addend: Expression): Expression
+  times(multiplier: number): Expression
+  getClass(): any
 }
 
 export class Money implements Expression{
@@ -23,6 +25,10 @@ export class Money implements Expression{
 
   getClass(): any {
     return  (<any>this).constructor.name
+  }
+
+  static getClass(): any {
+    return Money.dollar(1).getClass()
   }
 
   equals (object: Object): Boolean {
@@ -70,6 +76,14 @@ export class Sum implements Expression {
   }
 
   plus(addend: Expression): Expression {
-    return null
+    return new Sum(this, addend)
+  }
+
+  times(multiplier: number): Expression {
+    return new Sum(this.augend.times(multiplier), this.addend.times(multiplier))
+  }
+
+  getClass(): any {
+    return  (<any>this).constructor.name
   }
 }
