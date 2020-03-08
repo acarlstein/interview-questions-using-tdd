@@ -1,5 +1,8 @@
 # MultiCurrency
 
+If you wish to understand this code better, I will advice to purchase 
+"Test-Driven Development by Example" by Kent Beck.
+
 ## TODO and Done List
 
 * ~~$5 * 2 = $10~~ Done
@@ -18,6 +21,8 @@
 * ~~Reduce with credit union and string~~ Done
 * ~~Credit Union reduce with money~~ Done
 * ~~$5 + 10 CHF = $10 if rate is 2:1~~ Done
+* ~~Implement plus method in Sum class~~ Done
+* ~~Write times abstract method in Expression abstract class~~
 * Money rounding?
 * hashCode()
 * Equal null
@@ -25,7 +30,5 @@
 * Dollar/Franc multiplication
 * Dollar/Franc duplication
 * Return Money from $5 + $5
-* Implement plus method in Sum class
-* Write times abstract method in Expression abstract class
 
 

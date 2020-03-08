@@ -48,6 +48,7 @@ describe('MultiCurrency', () => {
   })
 
   describe('Making operations with a Credit Union',  () => {
+
     it('We can perform additions', () => {
       const five: Money = Money.dollar(5)
       const sum: Expression = five.plus(five)
@@ -87,7 +88,6 @@ describe('MultiCurrency', () => {
       const result: Money = creditUnion.reduce(fiveDollars.plus(tenFrancs), "USD")
       expect(result).to.be.eql(Money.dollar(10))
       expect(result.equals(Money.dollar(10))).to.be.true
-
     })
 
   })
@@ -111,4 +111,33 @@ describe('MultiCurrency', () => {
     })
   })
   
+  describe('Summation', () => {
+    it('_ can do addition', () => {
+      const fiveDollars: Expression = Money.dollar(5)
+      const tenFrancs: Expression = Money.franc(10)
+      const sum: Expression = new Sum(fiveDollars, tenFrancs).plus(fiveDollars)
+      const creditUnion: CreditUnion = new CreditUnion()
+      creditUnion.addRate("CHF", "USD", 2)
+      const result: Money = creditUnion.reduce(sum, "USD")
+      expect(result).to.eql(Money.dollar(15))
+    })
+
+    it('_ can do multiplication', () => {
+      const fiveDollars: Expression = Money.dollar(5)
+      const tenFrancs: Expression = Money.franc(10)
+      const sum: Expression = new Sum(fiveDollars, tenFrancs).times(2)
+      const creditUnion: CreditUnion = new CreditUnion()
+      creditUnion.addRate("CHF", "USD", 2)
+      const result: Money = creditUnion.reduce(sum, "USD")
+      expect(result).to.be.eql(Money.dollar(20))
+    })
+
+    it('_ can do addition in the same currency', () => {
+      const sum: Expression = Money.dollar(5).plus(Money.dollar(5))
+      const creditUnion: CreditUnion = new CreditUnion()
+      const result: Money = creditUnion.reduce(sum, "USD")
+      expect(result).to.be.eql(Money.dollar(10))
+    })
+
+  })
 })
