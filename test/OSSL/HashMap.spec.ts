@@ -3,42 +3,59 @@ import HashMap from '../../src/OSSL/HashMap'
 
 
 describe('HashMap', () => {
-  let HashMap: HashMap<string, number> = new HashMap<string, number>()
+  let hashMap: HashMap<string, number>
 
   beforeEach('Before each test', () => {
-    HashMap = new HashMap()
+    hashMap = new HashMap<string, number>()
   })
 
   it('A new HashMap', () => {
-    expect(HashMap).to.not.be.null
+    expect(hashMap).to.not.be.null
   })
 
   it('_ is empty', () => {
-    expect(HashMap.empty()).to.be.true
+    expect(hashMap.empty()).to.be.true
   })
 
   describe('HashMap is empty', () => {
 
     it('_ has no items', () => {
-      expect(HashMap.has('1')).to.be.false
+      expect(hashMap.has('1')).to.be.false
     })
 
     it('_ can have an item', () => {
-      expect(HashMap.put('1', 1)).to.be.eql(1)
-      expect(HashMap.empty()).to.be.false
+      expect(hashMap.put('1', 1)).to.be.eql(1)
+      expect(hashMap.empty()).to.be.false
     })
 
-    it('_ throws when trying to use a null value as a key or value', () => {
-      expect(() => HashMap.put('1', null)).to.throw(Error, 'NullPointerException')
-      expect(() => HashMap.put(null, 1)).to.throw(Error, 'NullPointerException')
+    it('_ allows the null values', () => {
+      expect(hashMap.put('1', null)).to.be.eql(null)
+      expect(hashMap.has('1')).to.be.true
+      expect(hashMap.remove('1')).to.be.eql(null)    
+    })
+
+    it('_ allows the null value as a key', () => {
+      expect(hashMap.put(null, 1)).to.be.eql(1)
+      expect(hashMap.has(null)).to.be.true
+      expect(hashMap.remove(null)).to.be.eql(1)       
+    })
+
+    it('_ replace value when using same key', () => {
+      expect(hashMap.put(null, 1)).to.be.eql(1)
+     
+      let originalSize = hashMap.size()
+      expect(hashMap.put(null, 2)).to.be.eql(2)
+      expect(hashMap.size()).to.be.eql(originalSize)
+     
+      expect(hashMap.remove(null)).to.be.eql(2) 
     })
 
     it('_ throws when trying to remove an item that does not exist', () => {
-      expect(() => HashMap.remove('1')).to.throw(Error, 'EmptyHashMapException')
+      expect(() => hashMap.remove('1')).to.throw(Error, 'EmptyHashMapException')
     })
 
     it('_ throws when trying to get an item that does not exists', () => {
-      expect(() => HashMap.get('1')).to.throw(Error, 'EmptyHashMapException')
+      expect(() => hashMap.get('1')).to.throw(Error, 'EmptyHashMapException')
     })
 
   })
@@ -46,43 +63,43 @@ describe('HashMap', () => {
   describe('An non empty HashMap', () => {
 
     beforeEach('Before each test', () => {
-      HashMap.put('1', 1)
+      hashMap.put('1', 1)
     })
 
     it('_ has at least one element', () => {
-      expect(HashMap.size()).to.be.eql(1)
-      expect(HashMap.empty()).to.be.false
+      expect(hashMap.size()).to.be.eql(1)
+      expect(hashMap.empty()).to.be.false
     })
 
     it('_ can tell us if it has the element', () => {
-      expect(HashMap.has('1')).to.be.true
+      expect(hashMap.has('1')).to.be.true
     })
 
     it('_ can have another element', () => {
-      expect(HashMap.put('2', 2)).to.be.eql(2)
-      expect(HashMap.size()).to.be.eql(2)
+      expect(hashMap.put('2', 2)).to.be.eql(2)
+      expect(hashMap.size()).to.be.eql(2)
     })
 
     it('_ can remove an element using the key', () => {
-      expect(HashMap.put('2', 2)).to.be.eql(2)
-      expect(HashMap.put('3', 3)).to.be.eql(3)
-      expect(HashMap.size()).to.be.eql(3)
-      expect(HashMap.remove('2')).to.be.eql(2)
-      expect(HashMap.size()).to.be.eql(2)
+      expect(hashMap.put('2', 2)).to.be.eql(2)
+      expect(hashMap.put('3', 3)).to.be.eql(3)
+      expect(hashMap.size()).to.be.eql(3)
+      expect(hashMap.remove('2')).to.be.eql(2)
+      expect(hashMap.size()).to.be.eql(2)
     })
 
     it('_ throw when trying to remove an item that does not exists', () => {
-      expect(() => HashMap.remove('3')).to.throw(Error, 'NoSuchElementException')
+      expect(() => hashMap.remove('3')).to.throw(Error, 'NoSuchElementException')
     })
 
     it('_ throw when trying to remove an item that does not exists', () => {
-      expect(() => HashMap.get('3')).to.throw(Error, 'NoSuchElementException')
+      expect(() => hashMap.get('3')).to.throw(Error, 'NoSuchElementException')
     })
 
     it('_ can get an element using the key', () => {
-      expect(HashMap.put('2', 2)).to.be.eql(2)
-      expect(HashMap.put('3', 3)).to.be.eql(3)
-      expect(HashMap.get('2')).to.be.eql(2)
+      expect(hashMap.put('2', 2)).to.be.eql(2)
+      expect(hashMap.put('3', 3)).to.be.eql(3)
+      expect(hashMap.get('2')).to.be.eql(2)
     })
 
   })

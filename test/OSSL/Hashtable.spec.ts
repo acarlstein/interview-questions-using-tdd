@@ -3,10 +3,10 @@ import Hashtable from '../../src/OSSL/Hashtable'
 
 
 describe('Hashtable', () => {
-  let hashtable: Hashtable<string, number> = new Hashtable<string, number>()
+  let hashtable: Hashtable<string, number>
 
   beforeEach('Before each test', () => {
-    hashtable = new Hashtable()
+    hashtable = new Hashtable<string, number>()
   })
 
   it('A new Hashtable', () => {

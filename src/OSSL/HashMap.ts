@@ -33,9 +33,6 @@ export default class HashMap<K, V> {
 
   // TODO: Refactor to something better
   put(key: K, value: V): V {
-    if (key == null || value == null){
-      throw new Error('NullPointerException')
-    }
     let item : [K, V] = [key, value]
     let index = this.getIndex(key)
     let list : LinkedList<[K, V]> = this.container[index]
@@ -48,6 +45,7 @@ export default class HashMap<K, V> {
           let oldItem: [K, V] = oldItems[i]
           if (key === oldItem[0]){
             list.remove(oldItem)
+            this._size--
           }
         }
       }
@@ -59,7 +57,7 @@ export default class HashMap<K, V> {
   }
 
   private getIndex(key : K): number {
-    if (typeof key['hashCode'] === 'function'){
+    if (key != null && typeof key['hashCode'] === 'function'){
       return key['hashCode'] % this.tableSize
     }
     return hashCode(key) % this.tableSize
