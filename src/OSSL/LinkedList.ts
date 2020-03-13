@@ -1,6 +1,6 @@
-export default class LinkedList<T> {
+export default class LinkedList<T extends any | null> {
   private _size: number = 0
-  private root: LinkNode<T> = null
+  private root: LinkNode<T> | null = null
 
   empty(): Boolean {
     return this._size == 0
@@ -24,13 +24,13 @@ export default class LinkedList<T> {
     return value
   }
 
-  private createNode(value: T): LinkNode<T> {
+  private createNode(value: T): LinkNode<T> | null {
     return new LinkNode<T>(value)
   }
 
-  toArray(): Array<T> {
-    let array: Array<T> = new Array() 
-    let current: LinkNode<T> = this.root
+  toArray(): Array<T | null> {
+    let array: Array<T | null> = new Array() 
+    let current: LinkNode<T> | null = this.root
     for(let current = this.root; current != null; current = current.next){
       array.push(current.value)
     }     
@@ -86,7 +86,7 @@ export default class LinkedList<T> {
 
 }
 
-class LinkNode<T> {
+class LinkNode<T extends any | null> {
   value: T | null
   next: LinkNode<T> | null
   constructor(value: T){

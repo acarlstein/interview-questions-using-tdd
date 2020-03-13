@@ -1,6 +1,6 @@
 import LinkedList from '../OSSL/LinkedList'
 import { hashCode } from './hashCode'
-export default class Hashtable<K, V> {
+export default class Hashtable<K extends object, V extends object> {
 
   private _size: number = 0;
   private tableSize: number = 16
@@ -10,13 +10,14 @@ export default class Hashtable<K, V> {
     return this._size == 0
   }
 
+
   has(key: K): Boolean {
     if(!this.empty()){  
       let list: LinkedList<[K, V]> = this.getListFromKey(key)
       if (list === undefined){
         return false
       }      
-      let items: [K,V][] = list.toArray()      
+      let items: ([K,V] | null)[] = list.toArray()      
       for (let i = 0; i < items.length; ++i){
         let item: [K, V] = items[i]
         if (key === item[0]){
@@ -95,7 +96,7 @@ export default class Hashtable<K, V> {
     return this._size
   }
 
-  get(key: K) : V {
+  get(key: K | any) : V {
     if(this.empty()){
       throw new Error('EmptyHashtableException')
     }
@@ -103,13 +104,13 @@ export default class Hashtable<K, V> {
     if (list === undefined){
       throw new Error('NoSuchElementException')
     }      
-    let items: [K,V][] = list.toArray()      
+    let items: [K, V][] = list.toArray()      
     for (let i = 0; i < items.length; ++i){
-      let item: [K, V] = items[i]
+      let item: [K | any, V | any] = items[i]
       // check for hashcode
       if (typeof key['hashCode'] === 'function'
         && typeof item[0]['hashCode'] === 'function'
-        && key['hashCode'] === item[0]['hashCode']){
+        && key['hashCode'] === item[0].hashCode){
         return item[1]
       }else if (key === item[0]){
         return item[1]

@@ -3,10 +3,10 @@ import Hashtable from '../../src/OSSL/Hashtable'
 
 
 describe('Hashtable', () => {
-  let hashtable: Hashtable<string, number>
+  let hashtable: Hashtable<String, Number>
 
   beforeEach('Before each test', () => {
-    hashtable = new Hashtable<string, number>()
+    hashtable = new Hashtable<String, Number>()
   })
 
   it('A new Hashtable', () => {
@@ -26,11 +26,6 @@ describe('Hashtable', () => {
     it('_ can have an item', () => {
       expect(hashtable.put('1', 1)).to.be.eql(1)
       expect(hashtable.empty()).to.be.false
-    })
-
-    it('_ throws when trying to use a null value as a key or value', () => {
-      expect(() => hashtable.put('1', null)).to.throw(Error, 'NullPointerException')
-      expect(() => hashtable.put(null, 1)).to.throw(Error, 'NullPointerException')
     })
 
     it('_ throws when trying to remove an item that does not exist', () => {

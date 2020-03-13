@@ -39,3 +39,4 @@ This means that is I decide to resize the array, I must make sure to rehash all 
 ~~I will have to create a linked list or use an dynamic array to deal with the collisions.~~
 I created an oversimplified version of a linked list to use in this Hashtable. I will perform the code changes to apply it.
 
+# HashMap
